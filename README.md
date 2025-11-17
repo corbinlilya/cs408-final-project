@@ -5,7 +5,7 @@
 TODO: Write a project spec
 
 ## Project Wireframe
-
-TODO: Replace the wireframe below with you own design.
-
-![wireframe](wireframe-example.png)
+![wireframe](index-wireframe.png)
+![wireframe](timer-wireframe.png)
+![wireframe](tasks-wireframe.png)
+![wireframe](history-wireframe.png)
