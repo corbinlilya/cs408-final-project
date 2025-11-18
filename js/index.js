@@ -7,7 +7,7 @@ const startAngle = -90;
 let fullSpan = 260.9;   // arc span in degrees
 let initialFire = false;
 let animating = false;
-const TOTAL_SECONDS = 12 * 60 + 41;
+let TOTAL_SECONDS = 12 * 60 + 41;
 
 const arc = document.getElementById("arc");
 const section = document.getElementById("section");
@@ -175,7 +175,7 @@ function animateArcToZero(duration = 1000) {
 function animateArcReverse(duration = 1500) {
     let startTime = null;
     let seconds = ((Math.random() % 0.60) * 100 * 60).toFixed(0); 
-
+    TOTAL_SECONDS = seconds;
 
     function tick(timestamp) {
         if (!startTime) startTime = timestamp;
