@@ -4,7 +4,6 @@
 <head>
     <meta charset="utf-8">
     <title>OneTask</title>
-    <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="css/nav.css">
     <link rel="stylesheet" href="css/home.css">
@@ -23,16 +22,23 @@
             <li id="history">History</li>
         </ul>
     </nav>
-<main>
-    <h1>Test</h1>
+    <main>
+        <header>
+            <h1><span class="faded">OneTask</span> / Home</h1>
+            <button class="manage-tasks" type="button" id="manageTasks">Manage Tasks</button>
+        </header>
+        <p id="welcome"></p>
 
-    <form id="taskForm">
-        <input type="text" id="taskName" placeholder="Task name">
-        <button type="submit">Add Task</button>
-    </form>
+        <form id="taskForm">
+            <input type="text" id="taskName" placeholder="Task name" required>
+            <button type="submit">Add Task</button>
+        </form>
 
-    <div id="output"></div>
-</main>
+        <h2>Your Tasks</h2>
+        <ul id="taskList"></ul>
+
+        <div id="debug"></div>
+    </main>
 
     <script type="module" src="js/home.js"></script>
     <script type="module" src="js/nav.js"></script>
