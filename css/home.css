@@ -1,0 +1,14 @@
+html, body {
+    display: flex;
+    flex-direction: row;
+    background-color: #F6F6F6;
+    font-family: 'Instrument Sans';
+    margin: 0;
+    height: 100%;
+    flex: 1;
+}
+
+main {
+    flex: 10;
+    padding: 1rem 1rem;
+}

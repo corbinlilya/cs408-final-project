@@ -7,6 +7,7 @@
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="css/index.css">
+  <link rel="stylesheet" href="css/modal.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&display=swap"
@@ -18,7 +19,8 @@
     <img src="/img/OneTask.png" class="logo" alt="OneTask Logo">
   </header>
   <main>
-    <h1>Start with <span class="highlight">One Task.</span><br><span class="new-line">Build <span class="highlight">Momentum.</span></span></h1>
+    <h1>Start with <span class="highlight">One Task.</span><br><span class="new-line">Build <span
+          class="highlight">Momentum.</span></span></h1>
     <h2>Focus on just getting started, working on one task at a time.</h2>
     <section aria-hidden="true" id="section">
       <div id="timer" class="timer">
@@ -37,8 +39,20 @@
     </section>
     <footer>
       <button id="dashboard" class="cta">Start Your List</button>
+      <div id="modal" class="modal hidden">
+        <div class="modal-content">
+          <p>Enter a user name to begin.</p>
+          <form id="usernameForm">
+            <label>Username</label>
+            <input type="text" id="userName" required>
+            <button class="submit" type="submit">Continue</button>
+            <button class="close" id="close" type="button">Close</button>
+          </form>
+        </div>
+      </div>
     </footer>
   </main>
   <script type="module" src="js/index.js"></script>
 </body>
+
 </html>

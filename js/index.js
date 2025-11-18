@@ -68,7 +68,30 @@ function deg2rad(deg) {
 }
 
 document.getElementById("dashboard").addEventListener("click", () => {
-    window.location.href = "/dashboard.html";
+    //window.location.href = "/home.html";
+    document.getElementById("modal").classList.remove("hidden");
+});
+
+const modal = document.getElementById("modal");
+const form = document.getElementById("usernameForm");
+const input = document.getElementById("userName");
+const closeBtn = document.getElementById("close");
+
+// Submit handler
+form.addEventListener("submit", (e) => {
+  e.preventDefault();
+
+  const username = input.value.trim();
+  if (!username) return;   // optional: show error message
+
+  localStorage.setItem("onetaskUsername", username);
+
+  window.location.href = `/home.html?user=${encodeURIComponent(username)}`;
+});
+
+// Close button
+closeBtn.addEventListener("click", () => {
+  modal.classList.add("hidden");
 });
 
 /**
