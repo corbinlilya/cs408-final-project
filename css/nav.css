@@ -1,0 +1,12 @@
+nav {
+
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    background-color: #F6F6F6;
+    font-family: 'Instrument Sans';
+    align-items: center;
+    padding: 1rem 1.5rem;
+}

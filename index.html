@@ -1,18 +1,44 @@
 <!doctype html>
-<html>
+<html lang="en">
 
 <head>
   <meta charset="utf-8">
-  <title>Hello World!</title>
+  <title>OneTask</title>
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/index.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&display=swap"
+    rel="stylesheet">
 </head>
 
 <body>
-  <h1>HTML Rocks!</h1>
-  <img src="img/compile.jpeg">
-  <script type="module" src="js/main.js"></script>
+  <header>
+    <img src="/img/OneTask.png" class="logo" alt="OneTask Logo">
+  </header>
+  <main>
+    <h1>Start with <span class="highlight">One Task.</span><br><span class="new-line">Build <span class="highlight">Momentum.</span></span></h1>
+    <h2>Focus on just getting started, working on one task at a time.</h2>
+    <section aria-hidden="true" id="section">
+      <div id="timer" class="timer">
+        <svg width="300" height="300" viewBox="0 0 300 300">
+          <path id="arc" fill="none" stroke="#1F0AFF" stroke-width="20" />
+        </svg>
+        <h3 id="timeText">2:20</h3>
+      </div>
+      <div id="task-stack" class="task-stack" aria-hidden="true">
+        <div id="t0" class="task t0">LeetCode Grind</div>
+        <div id="t1" class="task t1">Finish Laundry</div>
+        <div id="t2" class="task t2">CS408 Final Project</div>
+        <div id="t3" class="task t3">LeetCode Grind</div>
+        <div id="t4" class="task placeholder">STOP EDITING!!</div>
+      </div>
+    </section>
+    <footer>
+      <button id="dashboard" class="cta">Start Your List</button>
+    </footer>
+  </main>
+  <script type="module" src="js/index.js"></script>
 </body>
-
 </html>

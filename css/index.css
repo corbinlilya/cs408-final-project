@@ -1,0 +1,216 @@
+header {
+    flex: 1;
+    align-self: flex-start;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    background-color: #F6F6F6;
+    font-family: 'Instrument Sans';
+    align-items: center;
+    padding: 1rem 1.5rem;
+}
+
+.logo {
+    width: 200px;
+}
+
+h1 {
+    font-size: 4rem;
+    font-weight: 600;
+    line-height: 4rem;
+    margin: 0;
+    text-align: center;
+}
+
+.new-line {
+    font-size: 4.6rem;
+}
+
+.highlight {
+    color: #0022FF;
+}
+
+h2 {
+    color: gray;
+    font-weight: 500;
+    font-size: 2rem;
+    margin-top: 0.5rem;
+    text-align: center;
+}
+
+section {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.timer {
+    position: relative;
+    width: 300px;
+    height: 300px;
+}
+
+.timer h3 {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    margin: 0;
+    font-size: 3rem;
+    font-weight: 600;
+    color: black;
+    pointer-events: none;
+    /* ensures hover still reaches the section */
+}
+
+.task-stack {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 0rem 5rem 0rem 5rem;
+    overflow: hidden;
+    width: 500px;
+    height: 220px;
+}
+
+.task {
+    font-size: 2.5rem;
+    color: black;
+    width: 450px;
+    text-align: center;
+    padding: 10px 0px 10px 0;
+}
+
+.t1 {
+    border-width: 2px 0 2px 0;
+    border-style: solid;
+    border-color: gray;
+    transform: scale(0.7);
+    opacity: 0.6;
+    font-weight: 400;
+
+}
+
+.t2 {
+    border-width: 2px 0 2px 0;
+    border-style: solid;
+    font-weight: 600;
+    border-color: gray;
+}
+
+.t3 {
+    border-width: 2px 0 2px 0;
+    border-style: solid;
+    border-color: gray;
+    transform: scale(0.7);
+    opacity: 0.6;
+    font-weight: 400;
+}
+
+.t0 {
+    border-width: 2px 0 2px 0;
+    border-style: solid;
+    border-color: gray;
+    transform: scale(0.1);
+    opacity: 0.2;
+}
+
+footer {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.cta {
+    background-color: #0022FF;
+    color: white;
+    font-family: 'Instrument Sans';
+    border-width: 0px;
+    font-size: 1.5rem;
+    padding: 1rem 3rem;
+    border-radius: 1rem;
+    cursor: pointer;
+    margin: 2rem;
+    transition: transform 0.3s ease-in-out;
+    filter: drop-shadow(3px 3px 5px rgba(0, 0, 0, 0.3));
+}
+
+.cta:hover {
+    transform: scale(1.1);
+}
+
+.task.animateMain {
+    animation: slideDownMain 0.5s ease-in-out forwards;
+}
+
+.task.animateShrink {
+    animation: slideDown 0.5s ease-in-out forwards;
+}
+
+.task.animateGrow {
+    animation: outIn 0.5s ease-in-out forwards;
+}
+
+.task.animateOut {
+    animation: inOut 0.5s ease-in-out forwards;
+}
+
+@keyframes slideDownMain {
+    0% {
+        transform: translateY(0px) scale(0.7);
+        opacity: 0.6;
+        font-weight: 400;
+    }
+
+    100% {
+        transform: translateY(72px) scale(1);
+        opacity: 1;
+        font-weight: 600;
+    }
+}
+
+@keyframes slideDown {
+    0% {
+        transform: translateY(0px) scale(1);
+        opacity: 1;
+        font-weight: 600;
+    }
+
+    100% {
+        transform: translateY(72px) scale(0.7);
+        opacity: 0.6;
+        font-weight: 400;
+
+    }
+}
+
+@keyframes outIn {
+    0% {
+        transform: translateY(0px) scale(0.1);
+        opacity: 0.2;
+    }
+
+    100% {
+        transform: translateY(72px) scale(0.7);
+        opacity: 0.6;
+    }
+}
+
+@keyframes inOut {
+    0% {
+        transform: translateY(0px) scale(0.7);
+        opacity: 0.6;
+    }
+
+    100% {
+        transform: translateY(72px) scale(0.7);
+        opacity: 0.6;
+    }
+}
