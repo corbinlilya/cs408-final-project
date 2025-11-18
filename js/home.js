@@ -9,7 +9,7 @@ console.log("Logged-in user:", username);
 // ------------------------------------
 // 2. API endpoint
 // ------------------------------------
-const API_BASE = "https://i2sgiec8za.execute-api.us-east-2.amazonaws.com";
+const API_BASE = "https://i2sgiec8za.execute-api.us-east-2.amazonaws.com/users";
 
 // ------------------------------------
 // 3. DOM elements
