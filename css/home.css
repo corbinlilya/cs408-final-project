@@ -28,8 +28,13 @@ header {
     justify-content: space-between;
 }
 
-.manage-tasks {
+.action-button:hover {
+    transform: scale(1.05);
+}
+
+.action-button {
     display: flex;
+    transition: ease-in 0.1s;
     background-color: #F6F6F6;
     border-width: 0.8px;
     border-color: #767676;
@@ -50,7 +55,12 @@ section {
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    cursor: pointer;
+}
+
+.layout {
+    display: flex;
+    flex-direction: column;
+
 }
 
 .timer {
@@ -77,10 +87,12 @@ section {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    margin: 0rem 5rem 0rem 5rem;
+    margin: 40px 5rem 40px 5rem;
     overflow: hidden;
     width: 500px;
     height: 220px;
+    pointer-events: none;
+
 }
 
 .task {
@@ -167,6 +179,19 @@ footer {
     animation: inOut 0.3s ease-in-out forwards;
 }
 
+.spanimate {
+    display: inline-block;
+}
+
+.spanimate.moveIn {
+    animation: moveIn 0.3s ease-in-out forwards;
+}
+
+.spanimate.moveOff {
+    animation: moveOff 0.3s ease-in-out forwards;
+}
+
+
 @keyframes slideDownMain {
     0% {
         transform: translateY(0px) scale(0.7);
@@ -217,5 +242,27 @@ footer {
     100% {
         transform: translateY(72px) scale(0.7);
         opacity: 0.6;
+    }
+}
+
+@keyframes moveOff {
+    0% {
+        transform: translateX(0px);
+        opacity: 1;
+    }
+    100% {
+        transform: translateX(200px);
+        opacity: 0;
+    }
+}
+
+@keyframes moveIn {
+    0% {
+        opacity: 0;
+        transform: translateX(-220px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0px);
     }
 }

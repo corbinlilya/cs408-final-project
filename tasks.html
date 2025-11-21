@@ -8,6 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="css/nav.css">
     <link rel="stylesheet" href="css/home.css">
+    <link rel="stylesheet" href="css/tasks.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&display=swap"
@@ -15,7 +16,7 @@
 </head>
 
 <body>
-    
+
     <nav>
         <img src="/img/round-logo.png">
         <ul>
@@ -27,8 +28,23 @@
     <main>
         <header>
             <h1><span class="faded">OneTask</span> / Tasks</h1>
-            <button class="manage-tasks" type="button" id="manageTasks" style="border: none; color: white;background-color: #0022FF;">Add Task</button>
+            <button class="action-button" type="button" id="manageTasks"
+                style="border: none; color: white;background-color: #0022FF;">Add Task</button>
         </header>
+        <section id="taskListSection">
+            <table id="taskTable">
+                <thead>
+                    <tr>
+                        <th>Task Name</th>
+                        <th>Time Allocated</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody id="taskTableBody">
+                </tbody>
+            </table>
+        </section>
+
     </main>
     <script type="module" src="js/tasks.js"></script>
     <script type="module" src="js/nav.js"></script>

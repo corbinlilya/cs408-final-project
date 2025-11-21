@@ -25,26 +25,31 @@
     <main>
         <header>
             <h1><span class="faded">OneTask</span> / Home</h1>
-            <button class="manage-tasks" type="button" id="manageTasks">Manage Tasks</button>
+            <button class="action-button" type="button" id="manageTasks">Manage Tasks</button>
         </header>
         <p id="welcome"></p>
         <section id="section">
-            <div id="timer" class="timer">
-                <svg width="300" height="300" viewBox="0 0 300 300">
-                    <path id="arc" fill="none" stroke="#1F0AFF" stroke-width="20" />
-                </svg>
-                <h3 id="timeText">2:20</h3>
-            </div>
-            <div id="task-stack" class="task-stack" aria-hidden="true">
-                <div id="t0" class="task t0">...</div>
-                <div id="t1" class="task t1">...</div>
-                <div id="t2" class="task t2">...</div>
-                <div id="t3" class="task t3">...</div>
-                <div id="t4" class="task placeholder">...</div>
-            </div>
+            <section class="layout">
+                <div id="timer" class="timer">
+                    <svg width="300" height="300" viewBox="0 0 300 300">
+                        <path id="arc" fill="none" stroke="#1F0AFF" stroke-width="20" />
+                    </svg>
+                    <h3 id="timeText"></h3>
+                </div>
+                <button id="start" class="action-button" style="border: none; margin-top: 1rem; color: white; background-color: #0022FF;">Start</button>
+            </section>
+            <section class="layout">
+                <div id="task-stack" class="task-stack" aria-hidden="true">
+                    <div id="t0" class="task t0"><span class="spanimate">...</span></div>
+                    <div id="t1" class="task t1"><span class="spanimate">...</span></div>
+                    <div id="t2" class="task t2"><span class="spanimate">...</span></div>
+                    <div id="t3" class="task t3"><span class="spanimate">...</span></div>
+                    <div id="t4" class="task placeholder">...</div>
+                </div>
+                <button id="next" class="action-button" style="margin-top: 1rem;">Next Task</button>
+            </section>
         </section>
     </main>
-
     <script type="module" src="js/home.js"></script>
     <script type="module" src="js/nav.js"></script>
 </body>
