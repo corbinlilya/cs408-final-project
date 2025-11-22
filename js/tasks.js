@@ -4,6 +4,13 @@ const username = params.get("user");
 const API_BASE = "https://i2sgiec8za.execute-api.us-east-2.amazonaws.com";
 
 const taskTableBody = document.getElementById("taskTableBody");
+const addTaskModal = document.getElementById("addTaskModal");
+const addTaskForm = document.getElementById("addTaskForm");
+const addTaskClose = document.getElementById("addTaskClose");
+const addTaskButton = document.getElementById("manageTasks");
+const taskTitleInput = document.getElementById("taskTitleInput");
+const taskDurationInput = document.getElementById("taskDurationInput");
+
 
 function formatDuration(seconds) {
     if (!Number.isFinite(seconds) || seconds < 0) seconds = 0;
@@ -19,7 +26,6 @@ function formatDuration(seconds) {
     return `${hLabel} ${mLabel} ${sLabel}`;
 }
 
-// Turn "3 hours 20 minutes 5 seconds" into total seconds
 function parseDurationString(str) {
     if (!str) return null;
     const lower = str.toLowerCase();
@@ -36,6 +42,80 @@ function parseDurationString(str) {
     return h * 3600 + m * 60 + s;
 }
 
+function generateTaskId() {
+  if (window.crypto?.randomUUID) {
+    return "task-" + crypto.randomUUID();
+  }
+  return "task-" + Date.now().toString(36) + "-" + Math.random().toString(36).slice(2, 8);
+}
+
+function openAddTaskModal() {
+  if (!addTaskModal) return;
+  addTaskModal.classList.remove("hidden");
+  taskTitleInput.value = "";
+  taskDurationInput.value = "";
+  taskTitleInput.focus();
+}
+
+function closeAddTaskModal() {
+  if (!addTaskModal) return;
+  addTaskModal.classList.add("hidden");
+}
+
+// Open on "Add Task" button click
+if (addTaskButton) {
+  addTaskButton.addEventListener("click", () => {
+    openAddTaskModal();
+  });
+}
+
+// Close on "Cancel" button
+if (addTaskClose) {
+  addTaskClose.addEventListener("click", () => {
+    closeAddTaskModal();
+  });
+}
+
+// Close when clicking the dark overlay
+if (addTaskModal) {
+  addTaskModal.addEventListener("click", (e) => {
+    if (e.target === addTaskModal) {
+      closeAddTaskModal();
+    }
+  });
+}
+
+// Close on Escape key
+document.addEventListener("keydown", (e) => {
+  if (e.key === "Escape" && !addTaskModal.classList.contains("hidden")) {
+    closeAddTaskModal();
+  }
+});
+
+
+
+function parseHmsDuration(str) {
+  if (!str) return null;
+  const parts = str.split(":").map(p => p.trim());
+  if (parts.length !== 3) return null;
+
+  const [hStr, mStr, sStr] = parts;
+  const h = Number(hStr);
+  const m = Number(mStr);
+  const s = Number(sStr);
+
+  if (
+    !Number.isInteger(h) || h < 0 ||
+    !Number.isInteger(m) || m < 0 || m > 59 ||
+    !Number.isInteger(s) || s < 0 || s > 59
+  ) {
+    return null;
+  }
+
+  return h * 3600 + m * 60 + s;
+}
+
+
 async function loadTasks() {
     if (!username) return;
 
@@ -48,7 +128,7 @@ async function loadTasks() {
         if (!res.ok) {
             console.error("Error loading tasks:", raw);
             return;
-        }
+        } 
 
         const tasks = JSON.parse(raw);
         renderTasks(tasks);
@@ -63,7 +143,7 @@ function renderTasks(tasks) {
     tasks.forEach(task => {
         const row = document.createElement("tr");
 
-        // --- Task name (editable input) ---
+        // Render task name
         const nameTd = document.createElement("td");
         const nameInput = document.createElement("input");
         nameInput.type = "text";
@@ -71,7 +151,7 @@ function renderTasks(tasks) {
         nameInput.className = "task-input";
         nameTd.appendChild(nameInput);
 
-        // --- Duration (editable input) ---
+        // Editable duration
         const durTd = document.createElement("td");
         const durInput = document.createElement("input");
         durInput.type = "text";
@@ -79,11 +159,15 @@ function renderTasks(tasks) {
         durInput.className = "task-input";
         durTd.appendChild(durInput);
 
-        // --- Remove button ---
+        // Delete Button
         const removeTd = document.createElement("td");
         const removeBtn = document.createElement("button");
-        removeBtn.className = "remove-btn";
-        removeBtn.textContent = "−";
+        removeBtn.className = "action-button";
+        removeBtn.style.marginRight = "0.5rem";
+        removeBtn.textContent = "Delete";
+        removeBtn.style.backgroundColor = 'red';
+        removeBtn.style.border = 'none';
+        removeBtn.style.color = 'white';
         removeBtn.dataset.id = task.id;
         removeTd.appendChild(removeBtn);
 
@@ -92,29 +176,28 @@ function renderTasks(tasks) {
         row.appendChild(removeTd);
         taskTableBody.appendChild(row);
 
-        // ===== HOW WE SAVE =====
-        // 1) Saving title on blur or Enter
+        // Save title by blurring or entering
         nameInput.addEventListener("blur", async () => {
             const newTitle = nameInput.value.trim();
             if (!newTitle || newTitle === task.title) {
                 nameInput.value = task.title;
                 return;
             }
+            console.log(task.id, newTitle);
             await updateTask(task.id, { title: newTitle });
             task.title = newTitle;
         });
 
         nameInput.addEventListener("keydown", async (e) => {
             if (e.key === "Enter") {
-                nameInput.blur(); // triggers blur handler above
+                nameInput.blur();
             }
         });
 
-        // 2) Saving duration on blur or Enter
+        // Save duration on blur or Enter
         durInput.addEventListener("blur", async () => {
             const parsedSeconds = parseDurationString(durInput.value);
             if (parsedSeconds === null) {
-                // invalid → reset to previous
                 durInput.value = formatDuration(task.durationSeconds);
                 return;
             }
@@ -176,5 +259,54 @@ async function deleteTask(taskId) {
         console.error("Failed to delete:", err);
     }
 }
+
+if (addTaskForm) {
+  addTaskForm.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    if (!username) return;
+
+    const title = taskTitleInput.value.trim();
+    const durationSeconds = parseHmsDuration(taskDurationInput.value);
+
+    if (!title || durationSeconds === null) {
+      alert("Please enter a task name and a duration as HH:MM:SS (e.g., 00:25:00).");
+      return;
+    }
+
+    const newTask = {
+      id: generateTaskId(),
+      title,
+      durationSeconds,
+      remainingSeconds: durationSeconds,
+      isCompleted: false,
+      createdAt: new Date().toISOString(),
+    };
+
+    try {
+      const res = await fetch(
+        `${API_BASE}/users/${encodeURIComponent(username)}/tasks`,
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(newTask),
+        }
+      );
+
+      if (!res.ok) {
+        const text = await res.text();
+        console.error("Failed to create task:", res.status, text);
+        alert("Failed to create task. Check console for details.");
+        return;
+      }
+
+      closeAddTaskModal();
+      await loadTasks(); // re-render table with the new task
+    } catch (err) {
+      console.error("Error creating task:", err);
+      alert("Error creating task. Check console for details.");
+    }
+  });
+}
+
 
 loadTasks();

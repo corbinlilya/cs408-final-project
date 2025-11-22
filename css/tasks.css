@@ -1,16 +1,22 @@
-#taskListSection {
+/* Sections */
+#taskListSection,
+#historySection {
     margin-top: 2rem;
     width: 100%;
 }
 
-#taskTable {
+/* Tables */
+#taskTable,
+#historyTable {
     width: 100%;
     border-collapse: collapse;
     font-family: "Instrument Sans", sans-serif;
     font-size: 1rem;
 }
 
-#taskTable th {
+/* Table headers */
+#taskTable th,
+#historyTable th {
     text-align: left;
     padding: 0.75rem 0;
     font-weight: 600;
@@ -18,32 +24,15 @@
     border-bottom: 1px solid #ddd;
 }
 
-#taskTable td {
+/* Table cells */
+#taskTable td,
+#historyTable td {
     padding: 1.1rem 0;
     border-bottom: 1px solid #eee;
     color: #111;
 }
 
-.remove-btn {
-    background: #FF0000;
-    color: white;
-    border: none;
-    width: 32px;
-    height: 32px;
-    border-radius: 50%;
-    font-size: 1.3rem;
-    cursor: pointer;
-    transition: 0.15s ease;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.remove-btn:hover {
-    transform: scale(1.1);
-    background: #cc0000;
-}
-
+/* Inline inputs (Tasks page) */
 .task-input {
     width: 100%;
     border: none;
@@ -57,4 +46,16 @@
 /* Tiny visual cue on focus, but still subtle */
 .task-input:focus {
     border-bottom: 1px solid #ccc;
+}
+
+.actions-cell {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.actions-cell .action-button {
+    width: auto;
+    padding: 0.35rem 0.75rem;
+    font-size: 0.9rem;
 }

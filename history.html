@@ -2,35 +2,52 @@
 <html>
 
 <head>
-    <meta charset="utf-8">
-    <title>OneTask</title>
-    <meta name="description" content="">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="css/nav.css">
-    <link rel="stylesheet" href="css/home.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&display=swap"
+  <meta charset="utf-8">
+  <title>OneTask – History</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="css/nav.css">
+  <link rel="stylesheet" href="css/home.css">
+  <link rel="stylesheet" href="css/tasks.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&display=swap"
         rel="stylesheet">
 </head>
 
 <body>
-    <nav>
-        <img src="/img/round-logo.png">
-        <ul>
-            <li id="home">Home</li>
-            <li id="tasks">Tasks</li>
-            <li id="history" class="selected">History</li>
-        </ul>
-    </nav>
-    <main>
-        <header>
-            <h1><span class="faded">OneTask</span> / History</h1>
-        </header>
-        <h1>Test</h1>
-    </main>
-    <script type="module" src="js/history.js"></script>
-    <script type="module" src="js/nav.js"></script>
+  <nav>
+    <img src="/img/round-logo.png" alt="OneTask logo">
+    <ul>
+      <li id="home">Home</li>
+      <li id="tasks">Tasks</li>
+      <li id="history" class="selected">History</li>
+    </ul>
+  </nav>
+
+  <main>
+    <header>
+      <h1><span class="faded">OneTask</span> / History</h1>
+    </header>
+
+    <section id="historySection">
+      <table id="historyTable">
+        <thead>
+          <tr>
+            <th>Task Name</th>
+            <th>Time Allocated</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody id="historyTableBody">
+        </tbody>
+      </table>
+      <p id="historyDebug"
+         style="font-size: 0.85rem; color: gray; margin-top: 0.5rem;"></p>
+    </section>
+  </main>
+  <script type="module" src="js/history.js"></script>
+  <script type="module" src="js/nav.js"></script>
 </body>
 
 </html>

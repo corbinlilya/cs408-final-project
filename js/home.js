@@ -63,11 +63,7 @@ manageTasks.addEventListener("click", () => {
   window.location.href = `/tasks.html?user=${encodeURIComponent(username)}`;
 });
 
-
-// ==============================
 // Utility Functions
-// ==============================
-
 function deg2rad(deg) {
   return (deg * Math.PI) / 180;
 }
@@ -127,20 +123,11 @@ function resetAnimationClasses(el) {
 }
 
 
-// ==============================
-// Task Helpers
-// ==============================
-
 function getCurrentTask() {
   if (!tasks || tasks.length === 0) return null;
   const currentTitle = getTitleFrom(main);
   return tasks.find((t) => t.title === currentTitle) ?? null;
 }
-
-
-// ==============================
-// Timer & Arc Logic
-// ==============================
 
 // Compute timer and arc from current main task (duration + remaining)
 function setupTimerForCurrentTask() {
@@ -177,7 +164,7 @@ function setupTimerForCurrentTask() {
 }
 
 /**
- * Save remainingSeconds for the current main task to AWS (PATCH).
+ * Save remainingSeconds for the current main task to AWS
  */
 async function saveTimerState() {
   if (!username) return;
@@ -257,7 +244,6 @@ async function toggleCompletedForCurrentTask() {
 
   const updatedTask = {
     ...currentTask,
-    // mark as completed when we finish a session
     isCompleted: !currentTask.isCompleted,
     remainingSeconds: 0,
   };
@@ -351,10 +337,7 @@ function animateArcToZero() {
 }
 
 
-// ==============================
 // Task Stack Animation
-// ==============================
-
 function animateList() {
   [invisible, aboveMain, main, belowMain].forEach(resetAnimationClasses);
 
@@ -408,10 +391,7 @@ function animateList() {
 }
 
 
-// ==============================
 // Event Listeners
-// ==============================
-
 next.addEventListener("click", () => {
   if (animating) return;
   if (tasks.length === 0) return;
@@ -433,10 +413,7 @@ start.addEventListener("click", () => {
 });
 
 
-// ==============================
 // API: Load Tasks
-// ==============================
-
 async function loadTasks() {
   if (!username) return;
 

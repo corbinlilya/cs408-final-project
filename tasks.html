@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="css/nav.css">
     <link rel="stylesheet" href="css/home.css">
     <link rel="stylesheet" href="css/tasks.css">
+    <link rel="stylesheet" href="css/modal.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&display=swap"
@@ -44,7 +45,21 @@
                 </tbody>
             </table>
         </section>
+        <div id="addTaskModal" class="modal hidden">
+            <div class="modal-content">
+                <p>Add a new task.</p>
+                <form id="addTaskForm">
+                    <label for="taskTitleInput">Task name</label>
+                    <input type="text" id="taskTitleInput" required>
 
+                    <label for="taskDurationInput">Duration (HH:MM:SS)</label>
+                    <input type="text" id="taskDurationInput" placeholder="00:25:00" required>
+
+                    <button class="submit" type="submit">Add Task</button>
+                    <button class="close" id="addTaskClose" type="button">Cancel</button>
+                </form>
+            </div>
+        </div>
     </main>
     <script type="module" src="js/tasks.js"></script>
     <script type="module" src="js/nav.js"></script>
