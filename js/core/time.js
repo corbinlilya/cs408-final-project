@@ -1,8 +1,20 @@
 export function formatTime(secs) {
-  const minutes = Math.floor(secs / 60);
+  if (!Number.isFinite(secs) || secs < 0) secs = 0;
+
+  const hours = Math.floor(secs / 3600);
+  const minutes = Math.floor((secs % 3600) / 60);
   const seconds = secs % 60;
-  return `${minutes}:${seconds.toString().padStart(2, "0")}`;
+
+  const ss = seconds.toString().padStart(2, "0");
+
+  if (hours > 0) {
+    const mm = minutes.toString().padStart(2, "0");
+    return `${hours}:${mm}:${ss}`; // H:MM:SS
+  }
+
+  return `${minutes}:${ss}`;
 }
+
 
 export function formatDuration(seconds) {
   if (!Number.isFinite(seconds) || seconds < 0) seconds = 0;
