@@ -1,5 +1,5 @@
 <!doctype html>
-<html>
+<html lang="en">
 
 <head>
   <meta charset="utf-8">
@@ -12,16 +12,22 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&display=swap"
-        rel="stylesheet">
+    rel="stylesheet">
 </head>
 
 <body>
-  <nav>
-    <img src="/img/round-logo.png" alt="OneTask logo">
+  <nav aria-label="Primary">
+    <img alt="OneTask logo" src="/img/round-logo.png">
     <ul>
-      <li id="home">Home</li>
-      <li id="tasks">Tasks</li>
-      <li id="history" class="selected">History</li>
+      <li>
+        <button id="home">Home</button>
+      </li>
+      <li>
+        <button id="tasks">Tasks</button>
+      </li>
+      <li>
+        <button id="history" class="selected" aria-current="page">History</button>
+      </li>
     </ul>
   </nav>
 
@@ -42,8 +48,7 @@
         <tbody id="historyTableBody">
         </tbody>
       </table>
-      <p id="historyDebug"
-         style="font-size: 0.85rem; color: gray; margin-top: 0.5rem;"></p>
+      <p id="historyDebug" style="font-size: 0.85rem; color: gray; margin-top: 0.5rem;"></p>
     </section>
   </main>
   <script type="module" src="js/pages/history.js"></script>

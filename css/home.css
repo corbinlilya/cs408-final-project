@@ -19,7 +19,6 @@ main {
 }
 
 .faded {
-    opacity: 0.4;
     font-weight: 400;
 }
 
@@ -69,7 +68,7 @@ section {
     height: 300px;
 }
 
-.timer h3 {
+.timer p {
     position: absolute;
     top: 50%;
     left: 50%;

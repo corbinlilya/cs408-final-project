@@ -1,5 +1,5 @@
 <!doctype html>
-<html>
+<html lang="en">
 
 <head>
     <meta charset="utf-8">
@@ -12,13 +12,20 @@
     <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&display=swap"
         rel="stylesheet">
 </head>
+
 <body>
-    <nav>
-        <img src="/img/round-logo.png">
+    <nav aria-label="Primary">
+        <img alt="OneTask logo" src="/img/round-logo.png">
         <ul>
-            <li id="home" class="selected">Home</li>
-            <li id="tasks">Tasks</li>
-            <li id="history">History</li>
+            <li>
+                <button id="home" class="selected" aria-current="page">Home</button>
+            </li>
+            <li>
+                <button id="tasks">Tasks</button>
+            </li>
+            <li>
+                <button id="history">History</button>
+            </li>
         </ul>
     </nav>
     <main>
@@ -30,12 +37,16 @@
         <section id="section">
             <section class="layout">
                 <div id="timer" class="timer">
-                    <svg width="300" height="300" viewBox="0 0 300 300">
-                        <path id="arc" fill="none" stroke="#1F0AFF" stroke-width="20" />
-                    </svg>
-                    <h3 id="timeText"></h3>
+                    <div id="timer" class="timer">
+                        <svg width="300" height="300" viewBox="0 0 300 300" aria-hidden="true" focusable="false">
+                            <path id="arc" fill="none" stroke="#1F0AFF" stroke-width="20" />
+                        </svg>
+                        <p id="timeText" aria-live="polite"></p>
+                    </div>
+
                 </div>
-                <button id="start" class="action-button" style="border: none; margin-top: 1rem; color: white; background-color: #0022FF;">Start</button>
+                <button id="start" class="action-button"
+                    style="border: none; margin-top: 1rem; color: white; background-color: #0022FF;">Start</button>
             </section>
             <section class="layout">
                 <div id="task-stack" class="task-stack" aria-hidden="true">

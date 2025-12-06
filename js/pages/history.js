@@ -62,7 +62,7 @@ function renderHistory(tasks) {
     deleteBtn.textContent = "Delete";
     deleteBtn.className = "action-button";
     deleteBtn.style.marginRight = "0.5rem";
-    deleteBtn.style.backgroundColor = "red";
+    deleteBtn.style.backgroundColor = "#b30000";
     deleteBtn.style.border = "none";
     deleteBtn.style.color = "white";
 

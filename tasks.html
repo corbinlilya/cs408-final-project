@@ -1,5 +1,5 @@
 <!doctype html>
-<html>
+<html lang="en">
 
 <head>
     <meta charset="utf-8">
@@ -17,13 +17,18 @@
 </head>
 
 <body>
-
-    <nav>
-        <img src="/img/round-logo.png">
+    <nav aria-label="Primary">
+        <img alt="OneTask logo" src="/img/round-logo.png">
         <ul>
-            <li id="home">Home</li>
-            <li id="tasks" class="selected">Tasks</li>
-            <li id="history">History</li>
+            <li>
+                <button id="home">Home</button>
+            </li>
+            <li>
+                <button id="tasks" class="selected" aria-current="page">Tasks</button>
+            </li>
+            <li>
+                <button id="history">History</button>
+            </li>
         </ul>
     </nav>
     <main>
@@ -36,11 +41,12 @@
             <table id="taskTable">
                 <thead>
                     <tr>
-                        <th>Task Name</th>
-                        <th>Time Allocated</th>
-                        <th></th>
+                        <th id="taskNameHeader" scope="col">Task Name</th>
+                        <th id="timeAllocatedHeader" scope="col">Time Allocated</th>
+                        <th scope="col"></th>
                     </tr>
                 </thead>
+
                 <tbody id="taskTableBody">
                 </tbody>
             </table>

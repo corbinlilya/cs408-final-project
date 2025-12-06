@@ -94,6 +94,7 @@ function renderTasks(tasks) {
     nameInput.type = "text";
     nameInput.value = task.title || "";
     nameInput.className = "task-input";
+    nameInput.setAttribute("aria-label", "Task name");
     nameTd.appendChild(nameInput);
 
     // Duration
@@ -102,6 +103,7 @@ function renderTasks(tasks) {
     durInput.type = "text";
     durInput.value = formatDuration(task.durationSeconds);
     durInput.className = "task-input";
+    durInput.setAttribute("aria-label", "Time allocated (HH:MM:SS)");
     durTd.appendChild(durInput);
 
     // Delete
@@ -110,7 +112,7 @@ function renderTasks(tasks) {
     removeBtn.className = "action-button";
     removeBtn.style.marginRight = "0.5rem";
     removeBtn.textContent = "Delete";
-    removeBtn.style.backgroundColor = "red";
+    removeBtn.style.backgroundColor = "#b30000";
     removeBtn.style.border = "none";
     removeBtn.style.color = "white";
     removeTd.appendChild(removeBtn);
