@@ -80,13 +80,10 @@ function animateArcToZero(duration = 1000) {
     const elapsed = timestamp - startTime;
     const t = Math.min(elapsed / duration, 1);
 
-    const currentEndAngle = (startAngle + fullSpan) - fullSpan * t;
+    const currentEndAngle = startAngle + fullSpan - fullSpan * t;
     drawArcPath(arc, currentEndAngle);
 
-    const remainingSeconds = Math.max(
-      0,
-      Math.round(TOTAL_SECONDS * (1 - t))
-    );
+    const remainingSeconds = Math.max(0, Math.round(TOTAL_SECONDS * (1 - t)));
     timeText.textContent = formatTime(remainingSeconds);
 
     if (t < 1) {
@@ -131,6 +128,21 @@ function animateArcReverse(duration = 1500) {
 // draw initial full arc segment
 drawArcPath(arc, startAngle + fullSpan);
 
+export function sanitizeUsername(raw) {
+  if (typeof raw !== "string") return null;
+
+  // Reject ANY control chars in the original input
+  if (/[\u0000-\u001F\u007F]/.test(raw)) return null;
+
+  // Normalize and trim after the safety check
+  const v = raw.normalize("NFKC").trim();
+
+  if (v.length < 1 || v.length > 40) return null;
+
+  return v;
+}
+
+
 // ------------------------
 // Username Modal
 // ------------------------
@@ -144,7 +156,8 @@ if (dashboardBtn) {
 if (form) {
   form.addEventListener("submit", (e) => {
     e.preventDefault();
-    const username = input.value.trim();
+
+    const username = sanitizeUsername(input.value);
     if (!username) return;
 
     localStorage.setItem("onetaskUsername", username);

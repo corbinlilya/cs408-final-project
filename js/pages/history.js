@@ -125,3 +125,4 @@ async function loadCompletedTasks() {
 
 // Initial
 loadCompletedTasks();
+export { renderHistory };
